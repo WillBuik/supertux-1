@@ -59,6 +59,7 @@ jobs:
         sudo apt-get install dialog apt-utils -y
         sudo apt-get install gcc-9 g++-9 -y
         sudo apt-get install libgl1-mesa-dev -y
+        sudo apt-get install libglu1-mesa-dev -y
         echo "##vso[task.setvariable variable=CC]`which gcc-9`"
         echo "##vso[task.setvariable variable=CXX]`which g++-9`"
 

@@ -96,7 +96,15 @@ jobs:
       inputs:
         targetType: 'inline'
         workingDirectory: $(Build.ArtifactStagingDirectory)/WSL-Release
-        script: 'ctest -V'
+        script: 'ctest -V -T Test'
+
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: cTest
+        testResultsFiles: $(Build.ArtifactStagingDirectory)/WSL-Release/Testing/*/Test.xml
+        testRunTitle: $(Agent.JobName)
+      condition: succeededOrFailed()
+      displayName: 'Publish Test Results'
 
 - job: macos_10_14_hosted
   pool:
@@ -133,4 +141,12 @@ jobs:
       inputs:
         targetType: 'inline'
         workingDirectory: $(Build.ArtifactStagingDirectory)/WSL-Release
-        script: 'ctest -V'
+        script: 'ctest -V -T Test'
+
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: cTest
+        testResultsFiles: $(Build.ArtifactStagingDirectory)/WSL-Release/Testing/*/Test.xml
+        testRunTitle: $(Agent.JobName)
+      condition: succeededOrFailed()
+      displayName: 'Publish Test Results'

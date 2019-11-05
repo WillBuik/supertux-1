@@ -10,7 +10,6 @@ trigger:
 - master
 - dev/*
 
-
 jobs:
 
 - job: VS2019_x86

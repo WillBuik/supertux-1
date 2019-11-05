@@ -47,12 +47,12 @@ jobs:
         script: 'ctest -V -T Test'
 
     - task: PublishTestResults@2
-    inputs:
-      testResultsFormat: cTest
-      testResultsFiles: $(Build.ArtifactStagingDirectory)/x86-Debug/Testing/*/Test.xml
-      testRunTitle: $(Agent.JobName)
-    condition: succeededOrFailed()
-    displayName: 'Publish Test Results'
+      inputs:
+        testResultsFormat: cTest
+        testResultsFiles: $(Build.ArtifactStagingDirectory)/x86-Debug/Testing/*/Test.xml
+        testRunTitle: $(Agent.JobName)
+      condition: succeededOrFailed()
+      displayName: 'Publish Test Results'
 
 - job: Linux_x64
   pool:
